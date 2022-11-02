@@ -1,0 +1,11 @@
+.text{
+    font-family: 'secular One', sans-serif;
+    color: black;
+}
+select{
+    width: 200px;
+    padding: 10px;
+    border: 0;
+    background-color: lightgrey;
+    text-align: center;
+}

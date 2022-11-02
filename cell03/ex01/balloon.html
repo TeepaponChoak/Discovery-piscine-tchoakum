@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body, html {
+            height: 100%;
+        }
+        .main { 
+            position: relative;
+            height: 100%;
+            color: white;
+        }
+
+        .balloon {
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 36px;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="balloon" id="balloon" onclick="balloon_click()" onmouseleave="balloon_leave()"></div>
+        
+    </div>
+
+    <script>
+        var colorArray = [ "red", "green", "blue"]
+        var value = 0
+        var balloon = document.getElementById("balloon");
+        var size = document.getElementById("size")
+        var widthElem = balloon.offsetWidth;
+        var heightElem = balloon.offsetHeight;
+        function balloon_click() {
+            value++;
+            widthElem += 10;
+            heightElem += 10;
+
+            if (widthElem > 420 && heightElem > 420) {
+                widthElem = 200;
+                heightElem = 200;
+            }
+
+            if (value > 2) {
+                value = 0
+            }
+
+    
+            balloon.style.backgroundColor = colorArray[value];
+            balloon.style.width = widthElem + 'px';
+            balloon.style.height = heightElem + 'px';
+
+            console.log(widthElem + 'px' + ' x ' + heightElem + 'px')
+        }
+
+        function balloon_leave() {
+            value--;
+            widthElem -= 5;
+            heightElem -= 5;
+            if (widthElem < 200 && heightElem < 200) {
+                widthElem = 200;
+                heightElem = 200;
+            }
+
+            if (value < 0) {
+                value = 2
+            }
+
+            balloon.style.backgroundColor = colorArray[value];
+            balloon.style.width = widthElem + 'px';
+            balloon.style.height = heightElem + 'px';
+
+            console.log(widthElem + 'px' + ' x ' + heightElem + 'px')
+
+        }
+    </script>
+</body>
+</html>
